@@ -1,0 +1,106 @@
+/* Apply Inter font and basic styling */
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #1a202c; /* Dark background */
+    color: #e2e8f0; /* Light text color */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for better content display */
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#game-container {
+    max-width: 900px;
+    width: 100%;
+    background-color: #2d3748; /* Slightly lighter dark background for container */
+    border-radius: 1rem; /* Rounded corners */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 20px; /* Space from bottom */
+}
+
+@media (min-width: 768px) {
+    #game-container {
+        grid-template-columns: 2fr 1fr; /* Two columns on larger screens */
+    }
+}
+
+.panel {
+    background-color: #4a5568; /* Panel background */
+    border-radius: 0.75rem; /* Rounded corners */
+    padding: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.button-primary {
+    /* Tailwind classes are automatically processed by the CDN script in index.html */
+    /* This section is a comment to indicate what the @apply directives would do */
+    /* @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:scale-105; */
+}
+
+.button-secondary {
+    /* @apply bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:scale-105; */
+}
+
+.button-disabled {
+    /* @apply bg-gray-500 text-gray-300 cursor-not-allowed; */
+}
+
+.resource-item, .upgrade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #6b7280;
+}
+
+.resource-item:last-child, .upgrade-item:last-child {
+    border-bottom: none;
+}
+
+.book-section {
+    background-color: #6a7385; /* Slightly lighter background for book sections */
+    border-radius: 0.75rem;
+    padding: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.book-section h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #cbd5e0;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #2d3748;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-content button {
+    /* @apply mt-4 button-primary; */
+}
