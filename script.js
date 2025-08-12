@@ -151,7 +151,7 @@ function loadGame() {
         console.error("Error loading game from localStorage:", e);
         showModal("Error loading game! Starting a new game.");
         game.currentClicks = INITIAL_CLICKS; // Initialize fresh game
-        game.lastUpdateTime = Date.2now();
+        game.lastUpdateTime = Date.now();
     }
     // Ensure clicks don't go negative or above max on load if saved in a weird state
     game.currentClicks = Math.min(INITIAL_CLICKS, Math.max(0, game.currentClicks));
