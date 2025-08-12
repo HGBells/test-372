@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>372 Pages Incremental Game</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to your custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Status Bar -->
+        <div id="status-bar" class="panel col-span-full md:col-span-1">
+            <h2 class="text-xl font-bold mb-4 text-center">Status</h2>
+            <div class="grid grid-cols-2 gap-4 text-lg">
+                <div class="flex flex-col items-center">
+                    <span class="font-semibold">Current Clicks:</span>
+                    <span id="clicks-remaining" class="text-blue-300 text-2xl font-mono">372</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="font-semibold">372 Pages:</span>
+                    <span id="total-372-pages" class="text-yellow-300 text-2xl font-mono">0</span>
+                </div>
+            </div>
+            <p class="text-sm text-center text-gray-400 mt-2">Clicks regenerate automatically up to 372!</p>
+        </div>
+
+        <!-- Info Pane -->
+        <div id="info-pane" class="panel col-span-full md:col-span-1">
+            <h2 class="text-xl font-bold mb-4 text-center">Game Information</h2>
+            <p class="text-gray-300 text-sm mb-2">Welcome to the 372 Pages Incremental Game! Your goal is to accumulate "372 Pages" by reading the books reviewed on the podcast. Each book generates a unique resource, which you can convert into "372 Pages".</p>
+            <p class="text-gray-300 text-sm mb-2">You start with <span class="font-bold text-blue-300">372 clicks</span>. They regenerate automatically at a base rate of 1 click every 4 seconds, up to a maximum of 372 clicks. Use them wisely!</p>
+            <p class="text-gray-300 text-sm mb-2">Click a book's "Read" button to generate its specific resource. When you have enough, click "Convert" to gain "372 Pages".</p>
+            <p class="text-gray-300 text-sm">Spend "372 Pages" on upgrades to boost your reading efficiency and passive income!</p>
+        </div>
+
+        <!-- Book Sections -->
+        <div id="book-sections" class="panel col-span-full">
+            <h2 class="text-xl font-bold mb-4 text-center">Books to Read</h2>
+
+            <!-- Ready Player One -->
+            <div class="book-section" id="book-rp1">
+                <h3>Ready Player One</h3>
+                <p class="text-gray-300 text-sm mb-2">Resource: <span id="rp1-resource">0</span> 80s Nostalgia Bits</p>
+                <div class="flex flex-wrap gap-2">
+                    <button id="read-rp1" class="button-primary">Read Ready Player One</button>
+                    <button id="convert-rp1" class="button-secondary">Convert 80s Nostalgia Bits (Cost: 10)</button>
+                </div>
+            </div>
+
+            <!-- Armada -->
+            <div class="book-section" id="book-armada">
+                <h3>Armada</h3>
+                <p class="text-gray-300 text-sm mb-2">Resource: <span id="armada-resource">0</span> Gamer Logic Bytes</p>
+                <div class="flex flex-wrap gap-2">
+                    <button id="read-armada" class="button-primary">Read Armada</button>
+                    <button id="convert-armada" class="button-secondary">Convert Gamer Logic Bytes (Cost: 15)</button>
+                </div>
+            </div>
+
+            <!-- The Eye of Argon -->
+            <div class="book-section" id="book-eyeofargon">
+                <h3>The Eye of Argon</h3>
+                <p class="text-gray-300 text-sm mb-2">Resource: <span id="eyeofargon-resource">0</span> Purple Prose Blobs</p>
+                <div class="flex flex-wrap gap-2">
+                    <button id="read-eyeofargon" class="button-primary">Read The Eye of Argon</button>
+                    <button id="convert-eyeofargon" class="button-secondary">Convert Purple Prose Blobs (Cost: 5)</button>
+                </div>
+            </div>
+
+            <!-- Ugly Love -->
+            <div class="book-section" id="book-uglylove">
+                <h3>Ugly Love</h3>
+                <p class="text-gray-300 text-sm mb-2">Resource: <span id="uglylove-resource">0</span> Troubled Romance Tokens</p>
+                <div class="flex flex-wrap gap-2">
+                    <button id="read-uglylove" class="button-primary">Read Ugly Love</button>
+                    <button id="convert-uglylove" class="button-secondary">Convert Troubled Romance Tokens (Cost: 20)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upgrades Pane -->
+        <div id="upgrades-pane" class="panel col-span-full">
+            <h2 class="text-xl font-bold mb-4 text-center">Upgrades</h2>
+
+            <div class="upgrade-item">
+                <div>
+                    <p class="font-semibold">Better Reading Glasses (RP1)</p>
+                    <p class="text-gray-400 text-sm">Increases 80s Nostalgia Bits per click from Ready Player One by 1.</p>
+                    <p class="text-gray-400 text-sm">Current Level: <span id="upgrade-rp1-level">0</span></p>
+                </div>
+                <button id="buy-upgrade-rp1" class="button-secondary">Buy (10 372 Pages)</button>
+            </div>
+
+            <div class="upgrade-item">
+                <div>
+                    <p class="font-semibold">AI Gamer Bot (Armada)</p>
+                    <p class="text-gray-400 text-sm">Passively generates 1 Gamer Logic Byte every 5 seconds.</p>
+                    <p class="text-gray-400 text-sm">Current Level: <span id="upgrade-armada-level">0</span></p>
+                </div>
+                <button id="buy-upgrade-armada" class="button-secondary">Buy (50 372 Pages)</button>
+            </div>
+
+            <div class="upgrade-item">
+                <div>
+                    <p class="font-semibold">Verbose Lexicon (Eye of Argon)</p>
+                    <p class="text-gray-400 text-sm">Increases Purple Prose Blobs per click from The Eye of Argon by 1.</p>
+                    <p class="text-gray-400 text-sm">Current Level: <span id="upgrade-eyeofargon-level">0</span></p>
+                </div>
+                <button id="buy-upgrade-eyeofargon" class="button-secondary">Buy (15 372 Pages)</button>
+            </div>
+
+            <div class="upgrade-item">
+                <div>
+                    <p class="font-semibold">Relationship Counselor (Ugly Love)</p>
+                    <p class="text-gray-400 text-sm">Passively generates 1 Troubled Romance Token every 10 seconds.</p>
+                    <p class="text-gray-400 text-sm">Current Level: <span id="upgrade-uglylove-level">0</span></p>
+                </div>
+                <button id="buy-upgrade-uglylove" class="button-secondary">Buy (75 372 Pages)</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal for messages -->
+    <div id="game-modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="modal-message" class="text-lg mb-4"></p>
+            <button id="modal-close">OK</button>
+        </div>
+    </div>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
